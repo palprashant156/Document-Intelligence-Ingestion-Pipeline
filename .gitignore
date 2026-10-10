@@ -1,0 +1,28 @@
+# deps
+node_modules/
+apps/*/node_modules/
+packages/*/node_modules/
+
+# build
+dist/
+*.tsbuildinfo
+
+# env
+.env
+.env.local
+
+# uploads (keep .gitkeep)
+storage/uploads/*
+!storage/uploads/.gitkeep
+storage/temporary/*
+!storage/temporary/.gitkeep
+
+# logs / os
+*.log
+.DS_Store
+
+# vite / frontend build
+apps/web/dist/
+
+# api local runtime storage (test uploads)
+apps/api/storage/
