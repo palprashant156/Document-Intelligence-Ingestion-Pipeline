@@ -6,19 +6,18 @@
   "type": "module",
   "packageManager": "npm@11.0.0",
   "workspaces": [
-    "apps/api",
-    "apps/web",
-    "packages/shared"
+    "client",
+    "server"
   ],
   "scripts": {
-    "dev:api": "npm run dev -w apps/api",
-    "build:api": "npm run build -w apps/api",
-    "start:api": "npm run start -w apps/api",
-    "test:api": "npm run test -w apps/api",
-    "dev:web": "npm run dev -w apps/web",
-    "build:web": "npm run build -w apps/web",
-    "test:web": "npm run test -w apps/web",
-    "migrate": "npm run migrate -w apps/api",
-    "eval": "npm run eval -w apps/api"
+    "dev:server": "npm run dev -w server",
+    "build:server": "npm run build -w server",
+    "start:server": "npm run start -w server",
+    "test:server": "npm run test -w server",
+    "dev:client": "npm run dev -w client",
+    "build:client": "npm run build -w client",
+    "test:client": "npm run test -w client",
+    "migrate": "npm run migrate -w server",
+    "eval": "npm run eval -w server"
   }
 }

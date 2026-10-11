@@ -2,7 +2,7 @@
 
 Standalone portfolio project: upload PDF/DOCX/TXT/CSV/XLSX → validate → extract → normalize → chunk → embed → persist (Postgres) → ranked semantic search. No paid API required to run locally (deterministic mock embeddings default).
 
-> Frontend (`apps/web`, React + Vite + TypeScript) implements the Stitch reference in `frontend-design/*.png`: Documents library, Processing Queue, Chunk Explorer, Embeddings inspector, Semantic Search, plus Overview and Settings.
+> Frontend (`client/`, React + Vite + TypeScript) implements the Stitch reference in `frontend-design/*.png`: Documents library, Processing Queue, Chunk Explorer, Embeddings inspector, Semantic Search, plus Overview and Settings.
 
 ## Run locally (no paid API)
 
@@ -15,12 +15,12 @@ createdb documind  # once; uses DATABASE_URL in .env
 # 2. Install + migrate + test
 cp .env.example .env
 npm install
-npm run migrate -w apps/api
-npm run test:api
+npm run migrate -w server
+npm run test:server
 
 # 3. Serve (two terminals)
-npm run dev:api    # :4000
-npm run dev:web    # :5173, proxies /api → :4000
+npm run dev:server    # :4000
+npm run dev:client    # :5173, proxies /api → :4000
 # app: http://localhost:5173  ·  health: curl localhost:4000/api/health
 ```
 
@@ -43,7 +43,7 @@ Core works without it (JSONB vectors + exact brute-force cosine). After `CREATE 
 
 ## Structure
 
-`apps/api/src/{routes,services,documents/{parsers,normalization,chunking},embeddings,retrieval,repositories,database/migrations}` · `apps/web/src/{api,pages,components}` (typed client in `api/client.ts`, no keys in browser, no processing logic in components) · `docs/{architecture,decisions,api}` · `scripts/` · `storage/` (gitignored uploads).
+`server/src/{routes,services,documents/{parsers,normalization,chunking},embeddings,retrieval,repositories,database/migrations}` · `client/src/{api,pages,components}` (typed client in `api/client.ts`, no keys in browser, no processing logic in components) · `docs/{architecture,decisions,api}` · `server/storage/` (gitignored uploads).
 
 ## Frontend honesty notes (vs the Stitch mockups)
 
@@ -52,7 +52,7 @@ Core works without it (JSONB vectors + exact brute-force cosine). After `CREATE 
 
 ## Test
 
-`npm run test:api` — unit (validation, parsers, normalizer, chunker, mock embeddings, ranking) + DB-gated integration (upload→search→delete, retry, search filters). Retrieval eval: `npm run eval -w apps/api` (10 hand-labelled queries; P@K/R@K/MRR). `npm run test:web` — API client error mapping + base-URL resolution (5 tests).
+`npm run test:server` — unit (validation, parsers, normalizer, chunker, mock embeddings, ranking) + DB-gated integration (upload→search→delete, retry, search filters). Retrieval eval: `npm run eval -w server` (10 hand-labelled queries; P@K/R@K/MRR). `npm run test:client` — API client error mapping + base-URL resolution (5 tests).
 
 ## Limits
 

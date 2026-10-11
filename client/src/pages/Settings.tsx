@@ -49,7 +49,7 @@ export function SettingsPage() {
           <button className="btn" onClick={test} disabled={checking}>{checking ? 'Testing…' : 'Test connection'}</button>
         </div>
         {ping && <div className={`alert ${ping.ok ? 'alert-info' : 'alert-error'}`}><span className="mono">{ping.ok ? `✓ ${ping.detail}` : `✗ ${ping.detail}`}</span></div>}
-        <div className="note">Local dev proxies same-origin <span className="mono">/api</span> → <span className="mono">localhost:4000</span> (see <span className="mono">apps/web/vite.config.ts</span>). For a deployed API, save its origin here or set <span className="mono">VITE_API_BASE</span> at build time.</div>
+        <div className="note">Local dev proxies same-origin <span className="mono">/api</span> → <span className="mono">localhost:4000</span> (see <span className="mono">client/vite.config.ts</span>). For a deployed API, save its origin here or set <span className="mono">VITE_API_BASE</span> at build time.</div>
       </div>
 
       <div className="card card-pad" style={{ maxWidth: 720 }}>

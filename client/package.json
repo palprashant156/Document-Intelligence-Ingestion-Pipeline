@@ -1,5 +1,5 @@
 {
-  "name": "@documind/web",
+  "name": "@documind/client",
   "version": "0.1.0",
   "private": true,
   "type": "module",

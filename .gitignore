@@ -1,7 +1,7 @@
 # deps
 node_modules/
-apps/*/node_modules/
-packages/*/node_modules/
+client/node_modules/
+server/node_modules/
 
 # build
 dist/
@@ -11,18 +11,15 @@ dist/
 .env
 .env.local
 
-# uploads (keep .gitkeep)
-storage/uploads/*
-!storage/uploads/.gitkeep
-storage/temporary/*
-!storage/temporary/.gitkeep
+# server local runtime storage (keep .gitkeep)
+server/storage/uploads/*
+!server/storage/uploads/.gitkeep
+server/storage/temporary/*
+!server/storage/temporary/.gitkeep
 
 # logs / os
 *.log
 .DS_Store
 
 # vite / frontend build
-apps/web/dist/
-
-# api local runtime storage (test uploads)
-apps/api/storage/
+client/dist/
